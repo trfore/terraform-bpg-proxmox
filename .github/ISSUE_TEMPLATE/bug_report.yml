@@ -1,0 +1,53 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - trfore
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Example code helps a lot!
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+  - type: dropdown
+    id: tool
+    attributes:
+      label: IaC Tool
+      description: Which tool are you using?
+      multiple: false
+      options:
+        - Terraform
+        - OpenTofu
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: tool-version
+    attributes:
+      label: Tool Version
+      description: Which version are you using?
+      placeholder: "Ex: v1.3.0"
+    validations:
+      required: true
+  - type: input
+    id: provider-version
+    attributes:
+      label: Provider Version
+      description: Which version are you using?
+      placeholder: "Ex: v0.40.0"
+    validations:
+      required: true
