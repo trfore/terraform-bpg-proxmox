@@ -10,7 +10,7 @@ This repository contains modules and examples for deploying linux containers and
 | [Terraform]   | >= 1.5.0  |
 | [OpenTofu]    | >= 1.6.0  |
 | [Proxmox]     | >= 8.0    |
-| [BPG Proxmox] | >= 0.46.0 |
+| [BPG Proxmox] | >= 0.53.1 |
 
 ## Image Module
 

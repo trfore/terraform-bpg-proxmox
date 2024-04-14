@@ -10,7 +10,7 @@
 
 | Name          | Version   |
 | ------------- | --------- |
-| [bpg proxmox] | >= 0.46.0 |
+| [bpg proxmox] | >= 0.53.1 |
 
 ## Inputs
 
