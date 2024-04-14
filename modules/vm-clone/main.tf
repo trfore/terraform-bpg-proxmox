@@ -32,11 +32,23 @@ resource "proxmox_virtual_environment_vm" "vm" {
   cpu {
     cores = var.vcpu
     type  = var.vcpu_type
+    numa  = var.numa
   }
 
   memory {
     dedicated = var.memory
     floating  = var.memory_floating
+  }
+
+  dynamic "numa" {
+    for_each = (var.numa == true ? [1] : [])
+    content {
+      device    = var.numa_device
+      cpus      = var.numa_cpus
+      memory    = var.numa_memory
+      hostnodes = var.numa_hostnodes
+      policy    = var.numa_policy
+    }
   }
 
   vga {

@@ -94,6 +94,37 @@ variable "memory_floating" {
   default     = 1024
 }
 
+variable "numa" {
+  description = "Emulate NUMA architecture."
+  type        = bool
+  default     = false
+}
+
+variable "numa_device" {
+  type    = string
+  default = null
+}
+
+variable "numa_cpus" {
+  type    = string
+  default = null
+}
+
+variable "numa_memory" {
+  type    = string
+  default = null
+}
+
+variable "numa_hostnodes" {
+  type    = string
+  default = null
+}
+
+variable "numa_policy" {
+  type    = string
+  default = "preferred"
+}
+
 ### Disk Variables
 variable "scsihw" {
   description = "Storage controller, e.g. `virtio-scsi-pci`."

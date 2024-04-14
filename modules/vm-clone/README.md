@@ -34,6 +34,12 @@
 | vcpu_type                  | `host`            | String       | CPU type                                                                       | no       |
 | memory                     | `1024`            | Number       | Memory size in `MiB`                                                           | no       |
 | memory_floating            | `1024`            | Number       | Minimum memory size in `MiB`, setting this value enables memory ballooning     | no       |
+| numa                       | `false`           | Boolean      | Emulate NUMA architecture                                                      | no       |
+| numa_device                | `null`            | String       | Required if `numa=true`                                                        | Yes\*    |
+| numa_cpus                  | `null`            | String       | Required if `numa=true`                                                        | Yes\*    |
+| numa_memory                | `null`            | Number       | Required if `numa=true`                                                        | Yes\*    |
+| numa_hostnodes             | `null`            | String       |                                                                                | no       |
+| numa_policy                | `preferred`       | String       |                                                                                | no       |
 | scsihw                     | `virtio-scsi-pci` | String       | Storage controller, e.g. `virtio-scsi-pci`                                     | no       |
 | efi_disk_storage           | `local-lvm`       | String       | EFI disk storage location                                                      | no       |
 | efi_disk_format            | `raw`             | String       | EFI disk storage format                                                        | no       |
