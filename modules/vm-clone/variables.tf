@@ -54,10 +54,22 @@ variable "bios" {
   }
 }
 
+variable "machine" {
+  description = "QEMU machine type, e.g. `q35`."
+  type        = string
+  default     = "q35"
+}
+
 variable "qemu_guest_agent" {
   description = "Enable QEMU guest agent."
   type        = bool
   default     = true
+}
+
+variable "tablet" {
+  description = "Enable tablet for pointer."
+  type        = bool
+  default     = false
 }
 
 variable "display_type" {

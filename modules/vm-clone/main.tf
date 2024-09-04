@@ -9,12 +9,14 @@ terraform {
 }
 
 resource "proxmox_virtual_environment_vm" "vm" {
-  node_name   = var.node
-  vm_id       = var.vm_id
-  name        = var.vm_name
-  description = var.description
-  tags        = var.tags
-  bios        = var.bios
+  node_name     = var.node
+  vm_id         = var.vm_id
+  name          = var.vm_name
+  description   = var.description
+  tags          = var.tags
+  bios          = var.bios
+  machine       = var.machine
+  tablet_device = var.tablet
 
   operating_system {
     type = var.os_type

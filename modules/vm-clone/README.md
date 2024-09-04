@@ -27,7 +27,9 @@
 | full_clone                 | `true`            | Boolean      | Create a full independent clone; setting to `false` will create a linked clone | no       |
 | os_type                    | `l26`             | String       | QEMU OS type, e.g. `l26` for Linux 6.x - 2.6 kernel                            | no       |
 | bios                       | `seabios`         | String       | VM bios, setting to `ovmf` will automatically create a EFI disk                | no       |
+| machine                    | `q35`             | String       | QEMU machine type, e.g. `q35`                                                  | no       |
 | qemu_guest_agent           | `true`            | Boolean      | Enable QEMU guest agent                                                        | no       |
+| tablet                     | `false`           | Boolean      | Enable tablet for pointer                                                      | no       |
 | display_type               | `std`             | String       |                                                                                | no       |
 | display_memory             | `16`              | Number       |                                                                                | no       |
 | vcpu                       | `1`               | Number       | Number of CPU cores                                                            | no       |
