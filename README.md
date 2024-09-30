@@ -114,9 +114,8 @@ module "multiple_lxc" {
 
 </details>
 
-- See [`examples/lxc`](./examples/lxc/main.tf) for full working
+- See [`examples/lxc`](./examples/lxc/main.tf) for full working examples.
 - See [`modules/lxc/README.md`](./modules/lxc/README.md#inputs) for a list of variables.
-  examples.
 
 ## VM Clone Module
 
