@@ -86,12 +86,42 @@ module "lxc_static_ip_config" {
   ]
 }
 
+# Create Multiple LXCs with Static IP Addresses
+module "lxc_multiple_static_ip" {
+  source = "github.com/trfore/terraform-bpg-proxmox//modules/lxc"
+
+  for_each = tomap({
+    "lxc-example-04" = {
+      id           = 104
+      ipv4_address = "192.168.1.104/24"
+      ipv4_gateway = "192.168.1.1"
+    },
+    "lxc-example-05" = {
+      id           = 105
+      ipv4_address = "192.168.1.105/24"
+      ipv4_gateway = "192.168.1.1"
+    },
+  })
+
+  node     = "pve"                                                      # Required
+  lxc_id   = each.value.id                                              # Required
+  lxc_name = each.key                                                   # Optional
+  template = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst" # Required
+  os_type  = "ubuntu"                                                   # Optional, recommended
+  ipv4 = [
+    {
+      ipv4_address = each.value.ipv4_address
+      ipv4_gateway = each.value.ipv4_gateway
+    },
+  ]
+}
+
 # Create Single LXC with Additional Mountpoints
 module "lxc_mountpoint_config" {
   source = "github.com/trfore/terraform-bpg-proxmox//modules/lxc"
 
   node                = "pve"                                                      # Required
-  lxc_id              = 104                                                        # Required
+  lxc_id              = 106                                                        # Required
   lxc_name            = "lxc-example-mountpoints"                                  # Optional
   os_template         = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst" # Required
   os_type             = "ubuntu"                                                   # Optional, recommended
