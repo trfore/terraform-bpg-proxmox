@@ -17,6 +17,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
   bios          = var.bios
   machine       = var.machine
   tablet_device = var.tablet
+  datastore_id  = var.datastore_id
 
   operating_system {
     type = var.os_type
@@ -93,6 +94,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
     network_data_file_id = var.ci_network_data
     user_data_file_id    = var.ci_user_data
     vendor_data_file_id  = var.ci_vendor_data
+    datastore_id         = var.datastore_id
 
     user_account {
       username = var.ci_user
