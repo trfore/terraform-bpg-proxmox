@@ -146,7 +146,7 @@ variable "scsihw" {
 
 variable "disks" {
   type = list(object({
-    disk_storage   = optional(string, "local-lvm")
+    disk_storage   = optional(string, "local-zfs")
     disk_interface = optional(string, "scsi0")
     disk_size      = optional(number, 8)
     disk_format    = optional(string, "raw")
@@ -157,7 +157,7 @@ variable "disks" {
     }
   ))
   default = [{
-    disk_storage   = "local-lvm"
+    disk_storage   = "local-zfs"
     disk_interface = "scsi0"
     disk_size      = 8
     disk_format    = "raw"
@@ -171,7 +171,7 @@ variable "disks" {
 variable "efi_disk_storage" {
   description = "EFI disk storage location."
   type        = string
-  default     = "local-lvm"
+  default     = "local-zfs"
 }
 
 variable "efi_disk_format" {

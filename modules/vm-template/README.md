@@ -40,11 +40,11 @@
 
 | Variable                   | Default     | Type    | Description                                   | Required |
 | -------------------------- | ----------- | ------- | --------------------------------------------- | -------- |
-| efi_disk_storage           | `local-lvm` | String  | EFI disk storage location                     | no       |
+| efi_disk_storage           | `local-zfs` | String  | EFI disk storage location                     | no       |
 | efi_disk_format            | `raw`       | String  | EFI disk storage format                       | no       |
 | efi_disk_type              | `4m`        | String  | EFI disk OVMF firmware version                | no       |
 | efi_disk_pre_enrolled_keys | `true`      | Boolean | EFI disk enable pre-enrolled secure boot keys | no       |
-| disk_storage               | `local-lvm` | String  | Disk storage location                         | no       |
+| disk_storage               | `local-zfs` | String  | Disk storage location                         | no       |
 | disk_interface             | `scsi0`     | String  | Disk storage interface                        | no       |
 | disk_size                  | `8`         | Number  | Disk size                                     | no       |
 | disk_format                | `raw`       | String  | Disk format                                   | no       |

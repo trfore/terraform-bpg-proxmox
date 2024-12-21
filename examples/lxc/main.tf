@@ -128,13 +128,13 @@ module "lxc_mountpoint_config" {
   user_ssh_key_public = "~/.ssh/id_ed25519.pub"                                    # Optional, recommended
   mountpoint = [
     {
-      mp_volume = "local-lvm"
+      mp_volume = "local-zfs"
       mp_size   = "4G"
       mp_path   = "/mnt/local"
       mp_backup = true
     },
     {
-      mp_volume    = "local-lvm"
+      mp_volume    = "local-zfs"
       mp_size      = "4G"
       mp_path      = "/mnt/configs"
       mp_read_only = true

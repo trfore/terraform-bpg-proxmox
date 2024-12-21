@@ -101,7 +101,7 @@ variable "start_on_create" {
 variable "disk_storage" {
   description = "Disk storage location."
   type        = string
-  default     = "local-lvm"
+  default     = "local-zfs"
 }
 
 variable "disk_size" {
@@ -111,7 +111,7 @@ variable "disk_size" {
 
 variable "mountpoint" {
   type = list(object({
-    mp_volume    = optional(string, "local-lvm")
+    mp_volume    = optional(string, "local-zfs")
     mp_size      = optional(string, "4G")
     mp_path      = optional(string, "/mnt/local")
     mp_backup    = optional(bool, false)

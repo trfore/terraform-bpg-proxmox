@@ -29,7 +29,7 @@
 | vcpu                | `1`         | Number       | Number of CPU cores                                                                              | no       |
 | memory              | `512`       | Number       | Memory size in `MiB`                                                                             | no       |
 | memory_swap         | `512`       | Number       | Memory swap size in `MiB`                                                                        | no       |
-| disk_storage        | `local-lvm` | String       | Disk storage location                                                                            | no       |
+| disk_storage        | `local-zfs` | String       | Disk storage location                                                                            | no       |
 | disk_size           | `8`         | Number       | Disk size                                                                                        | no       |
 | user_ssh_key_public | `null`      | String       | File path to public SSH key for LXC user, e.g. `~/.ssh/id_ed25519.pub`                           | no       |
 | user_password       | `null`      | String       | Password for LXC user                                                                            | no       |
@@ -71,7 +71,7 @@ module "lxc_static_ip_config" {
 | Variable     | Default      | Type         | Description                                                              | Required |
 | ------------ | ------------ | ------------ | ------------------------------------------------------------------------ | -------- |
 | mountpoint   |              | List(Object) | Default will not create mount point, see example below for creating ones | no       |
-| mp_volume    | `local-lvm`  | String       |                                                                          | no       |
+| mp_volume    | `local-zfs`  | String       |                                                                          | no       |
 | mp_size      | `4G`         | String       |                                                                          | no       |
 | mp_path      | `/mnt/local` | String       |                                                                          | no       |
 | mp_backup    | `false`      | Boolean      |                                                                          | no       |
@@ -86,7 +86,7 @@ module "lxc_mountpoint_config" {
 
   mountpoint = [
     {
-      mp_volume    = "local-lvm"
+      mp_volume    = "local-zfs"
       mp_size      = "4G"
       mp_path      = "/mnt/local"
       mp_backup    = true

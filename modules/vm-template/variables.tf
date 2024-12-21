@@ -132,7 +132,7 @@ variable "memory_floating" {
 variable "efi_disk_storage" {
   description = "EFI disk storage location."
   type        = string
-  default     = "local-lvm"
+  default     = "local-zfs"
 }
 
 variable "efi_disk_format" {
@@ -156,7 +156,7 @@ variable "efi_disk_pre_enrolled_keys" {
 variable "disk_storage" {
   description = "Disk storage location."
   type        = string
-  default     = "local-lvm"
+  default     = "local-zfs"
 }
 
 variable "disk_interface" {
