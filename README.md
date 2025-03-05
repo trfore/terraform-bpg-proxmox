@@ -203,7 +203,7 @@ module "ubuntu22" {
 
 ```sh Grant Terraform Access to Proxmox
 # create role in PVE 8
-pveum role add TerraformUser -privs "Datastore.Allocate \
+pveum role add Terraform -privs "Datastore.Allocate \
   Datastore.AllocateSpace Datastore.AllocateTemplate \
   Datastore.Audit Pool.Allocate Sys.Audit Sys.Console Sys.Modify \
   SDN.Use VM.Allocate VM.Audit VM.Clone VM.Config.CDROM \
@@ -215,9 +215,9 @@ pveum role add TerraformUser -privs "Datastore.Allocate \
 pveum group add terraform-users
 
 # add permissions
-pveum acl modify /sdn/zones -group terraform-users -role TerraformUser
-pveum acl modify /storage -group terraform-users -role TerraformUser
-pveum acl modify /vms -group terraform-users -role TerraformUser
+pveum acl modify /sdn/zones -group terraform-users -role Terraform
+pveum acl modify /storage -group terraform-users -role Terraform
+pveum acl modify /vms -group terraform-users -role Terraform
 
 # create user 'terraform'
 pveum useradd terraform@pve -groups terraform-users
@@ -230,7 +230,7 @@ For the image and vm-template modules, downloading images on a PVE node requires
 `Sys.Audit` and `Sys.Modify` permission to the root directory, `/`.
 
 ```sh
-pveum acl modify / -group terraform-users -role TerraformUser
+pveum acl modify / -group terraform-users -role Terraform
 ```
 
 ## License

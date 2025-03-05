@@ -199,6 +199,12 @@ variable "disk_discard" {
 }
 
 ## Cloud-init Variables
+variable "ci_datastore_id" {
+  description = "Disk storage location for the cloud-init disk."
+  type        = string
+  default     = "local-lvm"
+}
+
 variable "ci_interface" {
   description = "Hardware interface for cloud-init configuration data."
   type        = string

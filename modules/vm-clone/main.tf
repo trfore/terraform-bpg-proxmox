@@ -27,8 +27,9 @@ resource "proxmox_virtual_environment_vm" "vm" {
   }
 
   clone {
-    vm_id = var.template_id
-    full  = var.full_clone
+    node_name = var.template_node
+    vm_id     = var.template_id
+    full      = var.full_clone
   }
 
   cpu {
@@ -69,6 +70,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
   }
 
   network_device {
+    model   = var.vnic_model
     bridge  = var.vnic_bridge
     vlan_id = var.vlan_tag
   }
@@ -89,6 +91,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
 
   # cloud-init config
   initialization {
+    datastore_id         = var.ci_datastore_id
     meta_data_file_id    = var.ci_meta_data
     network_data_file_id = var.ci_network_data
     user_data_file_id    = var.ci_user_data

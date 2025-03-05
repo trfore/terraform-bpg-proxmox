@@ -27,6 +27,12 @@ variable "tags" {
   default     = null
 }
 
+variable "template_node" {
+  description = "Name of Proxmox node where the template resides, e.g. `pve`."
+  type        = string
+  default     = null # same node as the target node `var.node` above
+}
+
 variable "template_id" {
   description = "Proxmox template ID to clone."
   type        = number
@@ -207,11 +213,17 @@ variable "vnic_bridge" {
 
 variable "vlan_tag" {
   description = "Networking adapter VLAN tag."
-  type        = string
-  default     = "1"
+  type        = number
+  default     = null
 }
 
 ### Cloud-init Variables
+variable "ci_datastore_id" {
+  description = "Disk storage location for the cloud-init disk."
+  type        = string
+  default     = "local-lvm"
+}
+
 variable "ci_user" {
   description = "Cloud-init 'default' user."
   type        = string
