@@ -95,3 +95,17 @@ module "vm_uefi_config" {
   bios        = "ovmf"                  # optional, set UEFI bios
   ci_ssh_key  = "~/.ssh/id_ed25519.pub" # optional, add SSH key to "default" user
 }
+
+# Create VM on Node ('pve1') With the Template Residing on Another Node ('pve')
+# - This will initially create the VM on the `template_node` then migrate the VM
+#   to the `node`.
+module "vm_centralized_templates" {
+  source = "github.com/trfore/terraform-bpg-proxmox//modules/vm-clone"
+
+  node          = "pve1"                     # required
+  vm_id         = 105                        # required
+  vm_name       = "vm-centralized-templates" # optional
+  template_node = "pve"                      # optional
+  template_id   = 9000                       # required
+  ci_ssh_key    = "~/.ssh/id_ed25519.pub"    # optional, add SSH key to "default" user
+}
