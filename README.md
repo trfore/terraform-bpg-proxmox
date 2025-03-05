@@ -1,7 +1,5 @@
 # Terraform BPG Proxmox Modules
 
-forked from [trfore/terraform-bpg-proxmox](https://github.com/trfore/terraform-bpg-proxmox)
-
 This repository contains modules and examples for deploying linux containers and virtual machines on [Proxmox] using
 [Terraform] or [OpenTofu] with the [BPG Proxmox] provider.
 
