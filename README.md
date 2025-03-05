@@ -280,9 +280,17 @@ Linux VM Cloud Images:
   - Default User: `ubuntu`
   - Use `ubuntu-2x.04-server-cloudimg-amd64.img`
 
+Proxmox:
+
+- [Proxmox]
+- [Proxmox Docs: qm(1)] - See for a complete list of variable values
+- [Proxmox Wiki: Windows VM Best Practices]
+
 [Terraform]: https://github.com/hashicorp/terraform
 [OpenTofu]: https://opentofu.org/
 [Proxmox]: https://www.proxmox.com/
+[Proxmox Docs: qm(1)]: https://pve.proxmox.com/pve-docs/qm.1.html
+[Proxmox Wiki: Windows VM Best Practices]: https://pve.proxmox.com/wiki/Windows_10_guest_best_practices
 [BPG Proxmox]: https://github.com/bpg/terraform-provider-proxmox
 [GitHub: BPG/Terraform-Provider-Proxmox]: https://github.com/bpg/terraform-provider-proxmox
 [CentOS Cloud Images]: https://cloud.centos.org/
