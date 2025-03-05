@@ -19,6 +19,7 @@
 | Variable                   | Default           | Type         | Description                                                                    | Required |
 | -------------------------- | ----------------- | ------------ | ------------------------------------------------------------------------------ | -------- |
 | node                       |                   | String       | Name of Proxmox node to provision VM on, e.g. `pve`                            | **Yes**  |
+| template_node              | `null`            | String       | Name of Proxmox node where the template resides, e.g. `pve`                    | no       |
 | vm_id                      |                   | Number       | ID number for new VM                                                           | **Yes**  |
 | vm_name                    | `null`            | String       | Defaults to using PVE naming, e.g. `Copy-of-VM-<template_name>`                | no       |
 | description                | `null`            | String       | VM description                                                                 | no       |
@@ -50,7 +51,7 @@
 | disks                      | See Below         | List(Object) | See [disks variables](#disks-variables) below                                  | no       |
 | vnic_model                 | `virtio`          | String       | Networking adapter model, e.g. `virtio`                                        | no       |
 | vnic_bridge                | `vmbr0`           | String       | Networking adapter bridge, e.g. `vmbr0`                                        | no       |
-| vlan_tag                   | `1`               | Number       | Networking adapter VLAN tag                                                    | no       |
+| vlan_tag                   | `null`               | Number       | Networking adapter VLAN tag                                                    | no       |
 
 ### Disks Variables
 
@@ -67,18 +68,19 @@
 
 ### Cloud-init Variables
 
-| Variable        | Default | Type   | Description                                                                                  | Required |
-| --------------- | ------- | ------ | -------------------------------------------------------------------------------------------- | -------- |
-| ci_user         | `null`  | String | Cloud-init 'default' user                                                                    | no       |
-| ci_ssh_key      | `null`  | String | File path to SSH key for 'default' user, e.g. `~/.ssh/id_ed25519.pub`                        | no       |
-| ci_dns_domain   | `null`  | String | DNS domain name, e.g. `example.com`. Default `null` value will use PVE host settings         | no       |
-| ci_dns_server   | `null`  | String | DNS server, e.g. `192.168.1.1`. Default `null` value will use PVE host settings              | no       |
-| ci_ipv4_cidr    | `dhcp`  | String | Default uses DHCP, for a static address set CIDR, e.g. `192.168.1.254/24`                    | no       |
-| ci_ipv4_gateway | `null`  | String | Default `null` will use `DHCP`, for a static address add IP, e.g. `192.168.1.1`              | no       |
-| ci_meta_data    | `null`  | String | Add a custom cloud-init `meta` configuration file, e.g `local:snippets/meta-data.yaml`       | no       |
-| ci_network_data | `null`  | String | Add a custom cloud-init `network` configuration file, e.g `local:snippets/network-data.yaml` | no       |
-| ci_user_data    | `null`  | String | Add a custom cloud-init `user` configuration file, e.g `local:snippets/user-data.yaml`       | no       |
-| ci_vendor_data  | `null`  | String | Add a custom cloud-init `vendor` configuration file, e.g `local:snippets/vendor-data.yaml`   | no       |
+| Variable        | Default     | Type   | Description                                                                                  | Required |
+| --------------- | ----------- | ------ | -------------------------------------------------------------------------------------------- | -------- |
+| ci_user         | `null`      | String | Cloud-init 'default' user                                                                    | no       |
+| ci_ssh_key      | `null`      | String | File path to SSH key for 'default' user, e.g. `~/.ssh/id_ed25519.pub`                        | no       |
+| ci_dns_domain   | `null`      | String | DNS domain name, e.g. `example.com`. Default `null` value will use PVE host settings         | no       |
+| ci_dns_server   | `null`      | String | DNS server, e.g. `192.168.1.1`. Default `null` value will use PVE host settings              | no       |
+| ci_ipv4_cidr    | `dhcp`      | String | Default uses DHCP, for a static address set CIDR, e.g. `192.168.1.254/24`                    | no       |
+| ci_ipv4_gateway | `null`      | String | Default `null` will use `DHCP`, for a static address add IP, e.g. `192.168.1.1`              | no       |
+| ci_datastore_id | `local-lvm` | String | Disk storage location for the cloud-init disk.                                               | no       |
+| ci_meta_data    | `null`      | String | Add a custom cloud-init `meta` configuration file, e.g `local:snippets/meta-data.yaml`       | no       |
+| ci_network_data | `null`      | String | Add a custom cloud-init `network` configuration file, e.g `local:snippets/network-data.yaml` | no       |
+| ci_user_data    | `null`      | String | Add a custom cloud-init `user` configuration file, e.g `local:snippets/user-data.yaml`       | no       |
+| ci_vendor_data  | `null`      | String | Add a custom cloud-init `vendor` configuration file, e.g `local:snippets/vendor-data.yaml`   | no       |
 
 ## Outputs
 

@@ -41,6 +41,7 @@ resource "proxmox_virtual_environment_vm" "vm_template" {
 
   # cloud-init config
   initialization {
+    datastore_id         = var.ci_datastore_id
     interface            = var.ci_interface
     type                 = var.ci_datasource_type
     meta_data_file_id    = var.ci_meta_data
