@@ -45,7 +45,7 @@
 | ------------ | ------- | ------------ | --------------------------------------------------------------------- | -------- |
 | vnic_name    | `eth0`  | String       | Networking adapter name                                               | no       |
 | vnic_bridge  | `vmbr0` | String       | Networking adapter bridge                                             | no       |
-| vlan_tag     | `1`     | String       | Network adapter VLAN tag                                              | no       |
+| vlan_tag     | `null`  | Number       | Network adapter VLAN tag                                              | no       |
 | ipv4         |         | List(Object) | Defaults to DHCP, see example below for setting static IP and Gateway | no       |
 | ipv4_address | `dhcp`  | String       | Defaults to DHCP, for static IPv4 address set CIDR                    | no       |
 | ipv4_gateway | `null`  | String       | Defaults to DHCP, for static IPv4 gateway set IP address              | no       |
