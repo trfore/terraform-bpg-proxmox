@@ -71,7 +71,7 @@ module "single_lxc" {
   memory              = 1024
   memory_swap         = 1024
   user_ssh_key_public = "~/.ssh/id_ed25519.pub"
-  vlan_tag            = "1"
+  vlan_tag            = 1
   ipv4 = [
     {
       ipv4_address = "192.168.1.100/24"

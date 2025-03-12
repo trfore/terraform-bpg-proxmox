@@ -51,7 +51,7 @@
 | disks                      | See Below         | List(Object) | See [disks variables](#disks-variables) below                                  | no       |
 | vnic_model                 | `virtio`          | String       | Networking adapter model, e.g. `virtio`                                        | no       |
 | vnic_bridge                | `vmbr0`           | String       | Networking adapter bridge, e.g. `vmbr0`                                        | no       |
-| vlan_tag                   | `null`               | Number       | Networking adapter VLAN tag                                                    | no       |
+| vlan_tag                   | `null`            | Number       | Networking adapter VLAN tag                                                    | no       |
 
 ### Disks Variables
 

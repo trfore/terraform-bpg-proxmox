@@ -77,7 +77,7 @@ module "lxc_static_ip_config" {
   os_template         = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst" # Required
   os_type             = "ubuntu"                                                   # Optional, recommended
   user_ssh_key_public = "~/.ssh/id_ed25519.pub"                                    # Optional, recommended
-  vlan_tag            = "1"                                                        # Optional, recommended
+  vlan_tag            = 1                                                          # Optional, recommended
   ipv4 = [
     {
       ipv4_address = "192.168.1.103/24"
