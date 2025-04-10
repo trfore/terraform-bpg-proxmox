@@ -14,6 +14,14 @@ provider "proxmox" {
   insecure  = true
 }
 
+# # For Bind Mounts use Root SSH Access
+# provider "proxmox" {
+#   endpoint = var.pve_api_url
+#   username = var.ssh_username
+#   password = var.ssh_password
+#   insecure = true
+# }
+
 # Create Single LXC
 module "lxc_minimal_config" {
   source = "github.com/trfore/terraform-bpg-proxmox//modules/lxc"
