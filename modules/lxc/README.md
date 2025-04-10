@@ -77,7 +77,24 @@ module "lxc_static_ip_config" {
 | mp_backup    | `false` | Boolean      |                                                                                                               | no       |
 | mp_read_only | `false` | Boolean      |                                                                                                               | no       |
 
-Example:
+To add [bind mounts] for local drive(s), you must use root SSH access.
+
+```HCL
+# Required for Bind Mounts
+provider "proxmox" {
+  endpoint = var.pve_api_url
+  insecure = true
+  username = "root@pam"
+  password = "MyRootPVEPassword"
+
+  ssh {
+    agent       = false
+    private_key = file("${var.ssh_key_path}")
+  }
+}
+```
+
+Mount Example:
 
 ```HCL
 # Create a new 4Gb drive using local storage
@@ -95,7 +112,7 @@ module "lxc_mountpoint_config" {
   ]
 }
 
-# Attach network storage
+# Attach network storage (REQUIRES ROOT SSH ACCESS)
 module "lxc_bind_network_storage" {
   source = "github.com/trfore/terraform-bpg-proxmox//modules/lxc"
   ...
