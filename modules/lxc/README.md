@@ -68,18 +68,19 @@ module "lxc_static_ip_config" {
 
 ### Mount Point Object
 
-| Variable     | Default      | Type         | Description                                                              | Required |
-| ------------ | ------------ | ------------ | ------------------------------------------------------------------------ | -------- |
-| mountpoint   |              | List(Object) | Default will not create mount point, see example below for creating ones | no       |
-| mp_volume    | `local-lvm`  | String       |                                                                          | no       |
-| mp_size      | `4G`         | String       |                                                                          | no       |
-| mp_path      | `/mnt/local` | String       |                                                                          | no       |
-| mp_backup    | `false`      | Boolean      |                                                                          | no       |
-| mp_read_only | `false`      | Boolean      |                                                                          | no       |
+| Variable     | Default | Type         | Description                                                                                                   | Required |
+| ------------ | ------- | ------------ | ------------------------------------------------------------------------------------------------------------- | -------- |
+| mountpoint   |         | List(Object) | Default will not create mount point, see example below for creating ones                                      | no       |
+| mp_volume    | `null`  | String       | Storage name or host directory path ([bind mounts]) - e.g. `local-lvm`, `local-zfs`, `/mnt/pve/MY_NAS_SHARE`. | no       |
+| mp_size      | `null`  | Number       | Size of the drive in GB. For [bind mounts] to local storage leave the default `null` value.                   | no       |
+| mp_path      | `null`  | String       | Path within the container to mount the drive, e.g. `/mnt/storage`                                             | no       |
+| mp_backup    | `false` | Boolean      |                                                                                                               | no       |
+| mp_read_only | `false` | Boolean      |                                                                                                               | no       |
 
 Example:
 
 ```HCL
+# Create a new 4Gb drive using local storage
 module "lxc_mountpoint_config" {
   source = "github.com/trfore/terraform-bpg-proxmox//modules/lxc"
   ...
@@ -87,9 +88,22 @@ module "lxc_mountpoint_config" {
   mountpoint = [
     {
       mp_volume    = "local-lvm"
-      mp_size      = "4G"
+      mp_size      = 4
       mp_path      = "/mnt/local"
       mp_backup    = true
+    },
+  ]
+}
+
+# Attach network storage
+module "lxc_bind_network_storage" {
+  source = "github.com/trfore/terraform-bpg-proxmox//modules/lxc"
+  ...
+
+  mountpoint = [
+    {
+      mp_volume = "/mnt/pve/nas-storage"
+      mp_path   = "/mnt/nas-storage"
     },
   ]
 }
@@ -103,3 +117,4 @@ module "lxc_mountpoint_config" {
 
 [terraform]: https://github.com/hashicorp/terraform
 [bpg proxmox]: https://github.com/bpg/terraform-provider-proxmox
+[bind mounts]: https://pve.proxmox.com/wiki/Unprivileged_LXC_containers#Using_local_directory_bind_mount_points
