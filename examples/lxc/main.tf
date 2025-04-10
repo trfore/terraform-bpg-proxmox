@@ -128,16 +128,34 @@ module "lxc_mountpoint_config" {
   user_ssh_key_public = "~/.ssh/id_ed25519.pub"                                    # Optional, recommended
   mountpoint = [
     {
-      mp_volume = "local-lvm"
-      mp_size   = "4G"
-      mp_path   = "/mnt/local"
+      mp_volume = "local-lvm"  # Required
+      mp_size   = "4G"         # Required
+      mp_path   = "/mnt/local" # Required
       mp_backup = true
     },
     {
-      mp_volume    = "local-lvm"
-      mp_size      = "4G"
-      mp_path      = "/mnt/configs"
+      mp_volume    = "local-lvm"    # Required
+      mp_size      = "4G"           # Required
+      mp_path      = "/mnt/configs" # Required
       mp_read_only = true
     }
+  ]
+}
+
+# Create Single LXC with a Bind Mount to Network Storage
+module "lxc_mountpoint_config" {
+  source = "github.com/trfore/terraform-bpg-proxmox//modules/lxc"
+
+  node                = "pve"                                                      # Required
+  lxc_id              = 107                                                        # Required
+  lxc_name            = "lxc-example-bindmount"                                    # Optional
+  os_template         = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst" # Required
+  os_type             = "ubuntu"                                                   # Optional, recommended
+  user_ssh_key_public = "~/.ssh/id_ed25519.pub"                                    # Optional, recommended
+  mountpoint = [
+    {
+      mp_volume = "/mnt/pve/nas-storage" # Required, host path to network drive
+      mp_path   = "/mnt/storage"         # Required, container path
+    },
   ]
 }
