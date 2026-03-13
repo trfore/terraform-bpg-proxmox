@@ -72,6 +72,18 @@ variable "qemu_guest_agent" {
   default     = true
 }
 
+variable "wait_for_ip_ipv4" {
+  description = "Wait for at least one non-loopback, non-link-local IPv4 address before considering the VM ready."
+  type        = bool
+  default     = false
+}
+
+variable "wait_for_ip_ipv6" {
+  description = "Wait for at least one non-loopback, non-link-local IPv6 address before considering the VM ready."
+  type        = bool
+  default     = false
+}
+
 variable "tablet" {
   description = "Enable tablet for pointer."
   type        = bool
@@ -282,4 +294,47 @@ variable "ci_vendor_data" {
   description = "Add a custom cloud-init `vendor` configuration file, e.g `local:snippets/vendor-data.yaml`."
   type        = string
   default     = null
+}
+
+### Timeout Variables
+variable "timeout_clone" {
+  description = "Timeout in seconds for cloning a VM."
+  type        = number
+  default     = 1800
+}
+
+variable "timeout_create" {
+  description = "Timeout in seconds for creating a VM."
+  type        = number
+  default     = 1800
+}
+
+variable "timeout_migrate" {
+  description = "Timeout in seconds for migrating a VM."
+  type        = number
+  default     = 1800
+}
+
+variable "timeout_reboot" {
+  description = "Timeout in seconds for rebooting a VM."
+  type        = number
+  default     = 1800
+}
+
+variable "timeout_shutdown_vm" {
+  description = "Timeout in seconds for shutting down a VM."
+  type        = number
+  default     = 1800
+}
+
+variable "timeout_start_vm" {
+  description = "Timeout in seconds for starting a VM."
+  type        = number
+  default     = 1800
+}
+
+variable "timeout_stop_vm" {
+  description = "Timeout in seconds for stopping a VM."
+  type        = number
+  default     = 300
 }

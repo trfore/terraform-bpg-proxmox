@@ -24,6 +24,11 @@ resource "proxmox_virtual_environment_vm" "vm" {
 
   agent {
     enabled = var.qemu_guest_agent
+
+    wait_for_ip {
+      ipv4 = var.wait_for_ip_ipv4
+      ipv6 = var.wait_for_ip_ipv6
+    }
   }
 
   clone {
@@ -114,6 +119,14 @@ resource "proxmox_virtual_environment_vm" "vm" {
       }
     }
   }
+
+  timeout_clone       = var.timeout_clone
+  timeout_create      = var.timeout_create
+  timeout_migrate     = var.timeout_migrate
+  timeout_reboot      = var.timeout_reboot
+  timeout_shutdown_vm = var.timeout_shutdown_vm
+  timeout_start_vm    = var.timeout_start_vm
+  timeout_stop_vm     = var.timeout_stop_vm
 
   # Cloud-init SSH keys will cause a forced replacement, this is expected
   # behavior see https://github.com/bpg/terraform-provider-proxmox/issues/373
